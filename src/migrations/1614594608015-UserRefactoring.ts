@@ -4,7 +4,7 @@ export class UserRefactoring1614594608015 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: "user",
+            name: "filos_user",
             columns: [
                 {
                     name: "id",
