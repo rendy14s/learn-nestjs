@@ -5,15 +5,15 @@
     "username": "root",
     "password": "",
     "database": "test",
-    "migrationsTableName": "user",
+    "migrationsTableName": "filos_migrations",
     "migrations": [
-        "src/migration/*{.ts,.js}"
+        "src/migrations/*{.ts,.js}"
     ],
     "entities": [
-        "dist/entity/**/*.js"
+        "dist/entitys/**/*.js"
     ],
     "cli": {
-        "migrationsDir": "dist/migration/**/*.js"
+        "migrationsDir": "dist/migrations/**/*.js"
     },
     "synchronize": true
 }

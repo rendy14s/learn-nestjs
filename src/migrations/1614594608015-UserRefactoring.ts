@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableIndex, TableColumn, TableForeignKey } from "typeorm";
 
 export class UserRefactoring1614594608015 implements MigrationInterface {
 
@@ -31,12 +31,11 @@ export class UserRefactoring1614594608015 implements MigrationInterface {
                 }
             ]
         }), true)
-
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        const table = await queryRunner.getTable("user");
-        await queryRunner.dropTable(table);
+        const table = await queryRunner.getTable("filos_user");
+        await queryRunner.dropTable("filos_user");
     }
 
 }
