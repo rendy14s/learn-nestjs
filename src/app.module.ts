@@ -6,20 +6,9 @@ import { AppService } from './app.service';
 import { AuthModule } from './middleware/auth/auth.module';
 import { UsersModule } from './app/users/users.module';
 
-import configuration from './config/config';
-
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'test',
-      entities: [],
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(),
     AuthModule,
     UsersModule,
   ],
