@@ -1,4 +1,5 @@
 {
+    "name": "development",
     "type": "mysql",
     "host": "localhost",
     "port": 3306,
@@ -7,13 +8,13 @@
     "database": "test",
     "migrationsTableName": "filos_migrations",
     "migrations": [
-        "src/migrations/*{.ts,.js}"
+        "dist/migrations/*.js"
     ],
     "entities": [
-        "dist/entitys/**/*.js"
+        "dist/app/resources/users/entities/*.js"
     ],
     "cli": {
         "migrationsDir": "dist/migrations/**/*.js"
     },
-    "synchronize": true
+    "synchronize": false
 }

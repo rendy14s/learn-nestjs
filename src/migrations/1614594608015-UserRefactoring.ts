@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table, TableIndex, TableColumn, TableForeignKey } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class UserRefactoring1614594608015 implements MigrationInterface {
 
@@ -13,6 +13,10 @@ export class UserRefactoring1614594608015 implements MigrationInterface {
                 },
                 {
                     name: "fullname",
+                    type: "varchar",
+                },
+                {
+                    name: "email",
                     type: "varchar",
                 },
                 {
