@@ -12,24 +12,23 @@ async function bootstrap() {
       logger: console,
     });
   app.enableCors();
-  // app.useGlobalPipes(
-  //   new ValidationPipe({
-  //     /**
-  //      * Strip away all none-object existing properties
-  //      */
-  //     whitelist: true,
-  //     /***
-  //      * Transform input objects to their corresponding DTO objects
-  //      */
-  //     transform: true,
-  //   }),
-  // );
+  app.useGlobalPipes(
+    new ValidationPipe({
+      /**
+       * Strip away all none-object existing properties
+       */
+      whitelist: true,
+      /***
+       * Transform input objects to their corresponding DTO objects
+       */
+      transform: true,
+    }),
+  );
 
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('Rendy Project')
+    .setDescription('The Rendy Project API description')
     .setVersion('1.0')
-    .addTag('cats')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
