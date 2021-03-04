@@ -1,16 +1,16 @@
-import { Entity, Column, BeforeInsert } from 'typeorm';
+import { Entity, Column, BeforeInsert, PrimaryGeneratedColumn } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
 @Entity('users')
 export class User {
-    id: string;
+    @PrimaryGeneratedColumn('uuid') id: string;
     @Column({
         type: 'int',
         nullable: false,
         primary: true
     })
 
-    username: string;
+    fullname: string;
     @Column({
         type: 'varchar',
         nullable: false
@@ -21,10 +21,11 @@ export class User {
         type: 'varchar',
         nullable: false
     })
+
+    email: string;
+
     @BeforeInsert() async hashPassword() {
         this.password = await bcrypt.hash(this.password, 10);
     }
-
-    email: string;
 
 }

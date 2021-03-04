@@ -13,6 +13,8 @@ export class AuthController {
 
     @Post('register')
     public async register(@Body() createUserDto: CreateUserDto,): Promise<RegistrationStatus> {
+        console.log(createUserDto, 'Auth Controller');
+
         const result:
             RegistrationStatus = await this.authService.register(createUserDto,);
         if (!result.success) {

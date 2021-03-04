@@ -16,6 +16,7 @@ export class AuthService {
     ) { }
 
     async register(userDto: CreateUserDto): Promise<RegistrationStatus> {
+        console.log(userDto, 'Auth Service')
         let status: RegistrationStatus = {
             success: true,
             message: 'user registered',
@@ -41,15 +42,15 @@ export class AuthService {
         const token = this._createToken(user);
 
         return {
-            username: user.username,
+            email: user.email,
             ...token,
         };
     }
 
-    private _createToken({ username }: UserDto): any {
+    private _createToken({ email }: UserDto): any {
         const expiresIn = process.env.EXPIRESIN;
 
-        const user: JwtPayload = { username };
+        const user: JwtPayload = { email };
         const accessToken = this.jwtService.sign(user);
         return {
             expiresIn,

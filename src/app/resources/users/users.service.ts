@@ -16,7 +16,13 @@ export class UsersService {
     private readonly userRepo: Repository<User>,
   ) { }
 
-  create(createUserDto: CreateUserDto) {
+  async create(createUserDto: CreateUserDto) {
+    console.log(createUserDto, 'User Service');
+
+    const user: User = await this.userRepo.create(createUserDto);
+
+    await this.userRepo.save(user);
+
     return 'This action adds a new user';
   }
 
@@ -37,8 +43,8 @@ export class UsersService {
     return `This action removes a #${id} user`;
   }
 
-  async loginLogic({ username, password }: LoginUserDto): Promise<CreateUserDto> {
-    const user = await this.userRepo.findOne({ where: { username } });
+  async loginLogic({ email, password }: LoginUserDto): Promise<CreateUserDto> {
+    const user = await this.userRepo.findOne({ where: { email } });
 
     if (!user) {
       throw new HttpException('User Not Found', HttpStatus.UNAUTHORIZED);

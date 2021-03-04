@@ -10,14 +10,4 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-
-  @Post('/login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
-  }
-
-  @Post('/register')
-  async register(@Request() req) {
-    return this.authService.register(req.user);
-  }
 }
