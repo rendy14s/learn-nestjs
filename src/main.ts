@@ -12,18 +12,18 @@ async function bootstrap() {
       logger: console,
     });
   app.enableCors();
-  app.useGlobalPipes(
-    new ValidationPipe({
-      /**
-       * Strip away all none-object existing properties
-       */
-      whitelist: true,
-      /***
-       * Transform input objects to their corresponding DTO objects
-       */
-      transform: true,
-    }),
-  );
+  // app.useGlobalPipes(
+  //   new ValidationPipe({
+  //     /**
+  //      * Strip away all none-object existing properties
+  //      */
+  //     whitelist: true,
+  //     /***
+  //      * Transform input objects to their corresponding DTO objects
+  //      */
+  //     transform: true,
+  //   }),
+  // );
 
   const config = new DocumentBuilder()
     .setTitle('Rendy Project')

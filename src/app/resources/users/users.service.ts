@@ -8,6 +8,7 @@ import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { FindIdUserDto } from './dto/find-id-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -57,5 +58,20 @@ export class UsersService {
     }
 
     return toUserDto(user);
+  }
+
+  async getOneTodo(id: string): Promise<FindIdUserDto> {
+    const findUser = await this.userRepo.findOne({
+      where: { id },
+    });
+
+    if (!findUser) {
+      throw new HttpException(
+        `findUser list doesn't exist`,
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
+    return toUserDto(findUser);
   }
 }
