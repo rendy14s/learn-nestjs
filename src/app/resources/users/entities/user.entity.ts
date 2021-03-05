@@ -13,7 +13,8 @@ export class User {
     fullname: string;
     @Column({
         type: 'varchar',
-        nullable: false
+        nullable: false,
+        select: false
     })
 
     password: string;
